@@ -2,17 +2,17 @@
 To get your MSI laptop supported, there are two main methods, one that
 requires windows to be installed, and the other works directly on linux.
 
-If you have any bios/firmware updates on the official MSI website and
+If you have any bios/firmware updates on the official MSI website, and
 you haven't updated yet then **DO NOT UPDATE!** follow the guide first:
 
 ## Windows method(recommended):
 
-1. Install windows 10/11 normally, booting directly from a live usb or
-any other trick wont work, however windows activation is not
+1. Install Windows 10/11 normally, booting directly from a live usb or
+any other trick won't work, however windows activation is not
 needed.
 
-2. After a successfull installation, make sure to download/install all
-windows updates from the settings
+2. After a successful installation, make sure to download/install all
+Windows updates from the settings
 (windows can't update bios/firmware automatically on MSI
 laptops but that doesn't mean you have to update them yourself,
 instead continue following the guide).
@@ -23,42 +23,42 @@ can be found on the support page for your laptop).
 
 4. If you fail at step 3, then you most likely need another app. usually
 its AMD Adrenalin software / GeForce Experience (nvidia)/ or intel
-equivelent.
+equivalent.
 
 5. Once the MSI app is installed, you can test the functions it offers,
 like user scenario and battery charge limit.
 
 6. If everything works as expected, download RWEverything:
-https://rweverything.com/download/ ![Screenshot_20240815_140755](https://github.com/user-attachments/assets/71c990c9-6609-4cd7-8f3e-149599e25522)
+https://rweverything.com/download/ ![download RWEverything](pics/support_guide/dl_rwe.png)
 
-7.  Launch it as administartor:
-![Screenshot (14)](https://github.com/user-attachments/assets/9aefbc6d-31a5-4c39-b9d6-d3fd95009bd4)
+7.  Launch it as administrator:
+![run as admin](pics/support_guide/run_as_admin.png)
 
 8. Navigate to the EC tab (page):
-![Screenshot (15)](https://github.com/user-attachments/assets/286d47e7-e4ec-4c2f-8041-356ab66ddfa4)
+![open ec tab](pics/support_guide/open_ec_tab.png)
 
-9. Here you should see a table of all the values your Embedded Chip
-has in its memory. \
-The values you see can be changed manually (by writing to them), \
+9. Here you should see a table of all the values your Embedded Chip has in its memory.\
+The values you see can be changed manually (by writing to them)\
+\
 DO NOT DO THAT: writing the wrong the values to the wrong address might brick the laptop completely and EC/BIOS RESET CAN'T FIX THAT!<br/>
-![Screenshot (19)](https://github.com/user-attachments/assets/851568a7-9225-4f95-880a-6466af71ed9d)
-
+![not apply changes](pics/support_guide/not_apply_changes.png)
 
 10. Change the reading speed to 500-600ms,
 this makes it easier to see how the
 values react to the MSI app settings:
-![Screenshot (16)](https://github.com/user-attachments/assets/18a71d57-ea7c-4a07-8fed-e327501852e1)
+![refresh rate button](pics/support_guide/refresh_menu.png)
 
 11. Reading addresses: lets say you are looking for a specific address
 0x54 (0xFirstNumberSecondNumber) FirstNumber can be found
 on the left side of the table and SecondNumber can be found on
-the top side of the table: ![Screenshot (17)](https://github.com/user-attachments/assets/c44d8d27-4c79-4e0e-94be-92e65fb4754b)
+the top side of the table:
+![hex editor how to](pics/support_guide/hex_editor_how_to.png)
 
 Each **Address** contains a **Value**, when you locate an **Address** inside the
 table you can write it like this 0x54 = 00 (**Address** = **Value**)
-This **Value** can change depending to what is related to, if you find the
-**Address** for CPU temperature; the **Value** will change on it's own, if you
-find the **Address** for battery charge limit then the **Value** wont change
+This **Value** can change depending on what it is related to, if you find the
+**Address** for CPU temperature; the **Value** will change on its own, if you
+find the **Address** for battery charge limit, then the **Value** won't change
 until you change the settings in the MSI app.
 
 Example: To figure out which **Address** is used by user scenario (`shift
@@ -68,7 +68,7 @@ while looking at the EC table.
 Eventually you'll notice a **Value** that changes each time you change the
 setting (or maybe two **Values** in two **Addresses** that change at the same
 time), once you find the **Address**, you can start writing down the **Value**
-for EACH user scenario so you can report it.
+for EACH user scenario, so you can report it.
 
 ### Linux method
 
@@ -86,7 +86,7 @@ To start, You need to load a module called `ec_sys`:
 
 * `sudo modprobe ec_sys`
 
-if you need to write to a specific address (but you really shouldn’t) you can you can enable
+if you need to write to a specific address (but you really shouldn’t) you can enable
 Read/Write mode for this module:
 
 * `sudo modprobe ec_sys write_support=1`

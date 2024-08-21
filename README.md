@@ -246,6 +246,7 @@ Set this parameter to a supported EC firmware version to use its configuration a
 **Please verify that the attributes return the correct data before attempting to write into them!**
 
 ## Contribute
-Eager to support the project? Your help is always welcome to keep the project alive and going! 
+Eager to support the project? Your help is always welcome to keep the project alive and going!
+   - Read how to make EC dump and find required features on Windows and Linux in [this guide](docs/device_support_guide.md)
    - Checkout the relevant [wiki article](https://github.com/BeardOverflow/msi-ec/wiki/Contributing).
    - If you want to go deeper: [read into this discussion regarding ec firmware naming patterns](https://github.com/BeardOverflow/msi-ec/discussions/98).
