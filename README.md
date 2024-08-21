@@ -15,7 +15,7 @@ Can't find your device in the list? Check contribution guides and open new issue
 
 ## Contribute
 Eager to support the project? Your help is always welcome to keep the project alive and going!
-- Read how to make EC dump and find required features on Windows and Linux in [this guide](docs/device_support_guide.md)
+- Read how to get necessary information about device on Windows and Linux in [this guide](docs/device_support_guide.md)
 - Checkout the relevant [wiki article](https://github.com/BeardOverflow/msi-ec/wiki/Contributing).
 - If you want to go deeper: [read into this discussion regarding ec firmware naming patterns](https://github.com/BeardOverflow/msi-ec/discussions/98).
 
