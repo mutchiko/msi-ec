@@ -6,9 +6,9 @@ body:
   - type: markdown
     attributes:
       value: >
-        Before you open a new issue, please check the supported devices list onthe main page,
+        Before you open a new issue, please check the [supported devices list}(https://github.com/BeardOverflow/msi-ec/blob/main/docs/supported_devices.md),
         If it's not there, you should follow the guide mentioned on the main page,
-        and then make a list of the addresses for features and their values to submit it.
+        and then make a list of the addresses for features and their values to submit it here.
         
         It's also possible to skip the issue and make a pull request directly.
 
