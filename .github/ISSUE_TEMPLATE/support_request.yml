@@ -29,7 +29,7 @@ body:
       required: false
 
   - type: textarea
-      id: feature list
+    id: feature list
     attributes:
       label: List of addresses and their values
       description: Make a list of address = value for each possible feature, you can submit an incomplete list and continue later
