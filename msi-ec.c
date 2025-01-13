@@ -1875,7 +1875,7 @@ static struct msi_ec_conf CONF22 __initdata = {
 	},
 	.cpu = {
 		.rt_temp_address       = 0x68,
-		.rt_fan_speed_address  = 0x71,
+		.rt_fan_speed_address  = 0xcd,
 		.rt_fan_speed_base_min = 0x19,
 		.rt_fan_speed_base_max = 0x37,
 		.bs_fan_speed_address  = MSI_EC_ADDR_UNKNOWN,
@@ -1884,7 +1884,7 @@ static struct msi_ec_conf CONF22 __initdata = {
 	},
 	.gpu = {
 		.rt_temp_address      = 0x80,
-		.rt_fan_speed_address = 0x89,
+		.rt_fan_speed_address = 0xcb,
 	},
 	.leds = {
 		.micmute_led_address = 0x2b,
