@@ -3180,7 +3180,7 @@ static struct msi_ec_conf CONF38 __initdata = {
 };
 
 static const char *ALLOWED_FW_39[] __initconst = {
-	"16R8IMS.111", // GF63 Thin 12VF
+	"16R8IMS1.111", // GF63 Thin 12VF
 	NULL
 };
 
@@ -3218,7 +3218,7 @@ static struct msi_ec_conf CONF39 __initdata = {
 		},
 	},
 	.super_battery = {
-		.address = MSI_EC_ADDR_UNSUPP, // unsupported
+		.address = 0xeb,
 		.mask    = 0x0f, // 00, 0f
 	},
 	.fan_mode = {
