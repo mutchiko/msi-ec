@@ -3257,7 +3257,13 @@ static struct msi_ec_conf CONF39 __initdata = {
 	},
 };
 
+static const char *ALLOWED_FW_40[] __initconst = {
+	"1551EMS1.106", // Modern 15 A10M
+	NULL
+};
+
 static struct msi_ec_conf CONF40 __initdata = {
+		
 	.allowed_fw = ALLOWED_FW_40,
 	.charge_control = {
 		.address      = 0xef,
@@ -3284,7 +3290,7 @@ static struct msi_ec_conf CONF40 __initdata = {
 		.modes = {
 			{ SM_ECO_NAME,     0xc2 },
 			{ SM_COMFORT_NAME, 0xc1 },
-			{ SM_COMFORT_NAME, 0xc1 },
+			{ SM_SPORT_NAME,   0xc1 },
 			{ SM_SPORT_NAME,   0xc0 },
 			MSI_EC_MODE_NULL
 		},
