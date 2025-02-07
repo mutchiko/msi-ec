@@ -3291,7 +3291,7 @@ static struct msi_ec_conf CONF40 __initdata = {
 			{ SM_ECO_NAME,     0xc2 },
 			{ SM_COMFORT_NAME, 0xc1 },
 			{ SM_SPORT_NAME,   0xc1 },
-			{ SM_SPORT_NAME,   0xc0 },
+			{ SM_TURBO_NAME,   0xc0 },
 			MSI_EC_MODE_NULL
 		},
 	},
