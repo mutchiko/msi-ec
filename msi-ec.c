@@ -3211,14 +3211,13 @@ static struct msi_ec_conf CONF39 __initdata = {
 		.address = 0xd2,
 		.modes = {
 			{ SM_ECO_NAME,     0xc2 },
-			{ SM_COMFORT_NAME, 0xc1 },
 			{ SM_SPORT_NAME,   0xc1 },
-			{ SM_TURBO_NAME,   0xc4 },
+			{ SM_TURBO_NAME,   0xc0 },
 			MSI_EC_MODE_NULL
 		},
 	},
 	.super_battery = {
-		.address = 0xeb,
+		.address = 0xeb, // unsupported
 		.mask    = 0x0f, // 00, 0f
 	},
 	.fan_mode = {
