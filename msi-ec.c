@@ -1511,6 +1511,7 @@ static struct msi_ec_conf CONF20 __initdata = {
 static const char *ALLOWED_FW_21[] __initconst = {
 	"16R3EMS1.102", // GF63 Thin 9SC
 	"16R3EMS1.104",
+	"16R4EMS2.102", // GF63 Thin 9SCSR
 	NULL
 };
 
