@@ -404,6 +404,7 @@ static const char *ALLOWED_FW_5[] __initconst = {
 	"158LEMS1.103", // Alpha 15 B5EE / B5EEK
 	"158LEMS1.105",
 	"158LEMS1.106",
+	"17LLEMS1.106", // Alpha 17 B5EEK
 	NULL
 };
 
@@ -427,14 +428,14 @@ static struct msi_ec_conf CONF5 __initdata = {
 	.shift_mode = {
 		.address = 0xf2,
 		.modes = {
-			{ SM_ECO_NAME,     0xc2 },
-			{ SM_COMFORT_NAME, 0xc1 },
-			{ SM_TURBO_NAME,   0xc4 },
+			{ SM_ECO_NAME,     0xc2 }, // super_battery = 0xa5
+			{ SM_COMFORT_NAME, 0xc1 }, // super_battery = 0xa4
+			{ SM_TURBO_NAME,   0xc4 }, // super_battery = 0xa0
 			MSI_EC_MODE_NULL
 		},
 	},
 	.super_battery = {
-		.address = MSI_EC_ADDR_UNKNOWN,
+		.address = MSI_EC_ADDR_UNKNOWN, // knwon. 0xd5.
 		.mask    = 0x0f,
 	},
 	.fan_mode = {
@@ -451,8 +452,8 @@ static struct msi_ec_conf CONF5 __initdata = {
 		.rt_fan_speed_address = 0x71,
 	},
 	.gpu = {
-		.rt_temp_address      = MSI_EC_ADDR_UNKNOWN,
-		.rt_fan_speed_address = MSI_EC_ADDR_UNKNOWN,
+		.rt_temp_address      = 0x80,
+		.rt_fan_speed_address = 0x89,
 	},
 	.leds = {
 		.micmute_led_address = 0x2b,
@@ -1580,81 +1581,14 @@ static struct msi_ec_conf CONF21 __initdata = {
 	},
 };
 
+
 static const char *ALLOWED_FW_22[] __initconst = {
-	"17LLEMS1.106", // Alpha 17 B5EEK
+	"16WKEMS1.105", // MSI Bravo 15 A4DDR (issue #134)
 	NULL
 };
 
 static struct msi_ec_conf CONF22 __initdata = {
 	.allowed_fw = ALLOWED_FW_22, // WMI1 based
-	.charge_control_address = 0xef,
-	.webcam = {
-		.address       = 0x2e,
-		.block_address = 0x2f,
-		.bit           = 1,
-	},
-	.fn_win_swap = {
-		.address = 0xbf,
-		.bit     = 4,
-		.invert  = true,
-	},
-	.cooler_boost = {
-		.address = 0x98,
-		.bit     = 7,
-	},
-	.shift_mode = {
-		.address = 0xf2,
-		.modes = {
-			{ SM_ECO_NAME,     0xc2 }, // super_battery = 0xa5
-			{ SM_COMFORT_NAME, 0xc1 }, // super_battery = 0xa4
-			{ SM_SPORT_NAME,   0xc1 }, // super_battery = 0xa1
-			{ SM_TURBO_NAME,   0xc4 }, // super_battery = 0xa0
-			MSI_EC_MODE_NULL
-		},
-	},
-	.super_battery = {
-		.address = MSI_EC_ADDR_UNKNOWN, // knwon. 0xd5.
-		.mask    = 0x0f,
-	},
-	.fan_mode = {
-		.address = 0xf4,
-		.modes = {
-			{ FM_AUTO_NAME,     0x0d },
-			{ FM_SILENT_NAME,   0x1d },
-			{ FM_ADVANCED_NAME, 0x8d },
-			MSI_EC_MODE_NULL
-		},
-	},
-	.cpu = {
-		.rt_temp_address      = 0x68,
-		.rt_fan_speed_address = 0x71,
-	},
-	.gpu = {
-		.rt_temp_address      = 0x80,
-		.rt_fan_speed_address = 0x89,
-	},
-	.leds = {
-		.micmute_led_address = 0x2b,
-		.mute_led_address    = 0x2c,
-		.bit                 = 2,
-	},
-	.kbd_bl = {
-		.bl_mode_address  = MSI_EC_ADDR_UNKNOWN,
-		.bl_modes         = { 0x00, 0x08 },
-		.max_mode         = 1,
-		.bl_state_address = MSI_EC_ADDR_UNSUPP, // RGB
-		.state_base_value = 0x80,
-		.max_state        = 3,
-	},
-};
-
-static const char *ALLOWED_FW_23[] __initconst = {
-	"16WKEMS1.105", // MSI Bravo 15 A4DDR (issue #134)
-	NULL
-};
-
-static struct msi_ec_conf CONF23 __initdata = {
-	.allowed_fw = ALLOWED_FW_23, // WMI1 based
 	.charge_control_address = 0xef,
 	.webcam = {
 		.address       = 0x2e,
@@ -1720,13 +1654,13 @@ static struct msi_ec_conf CONF23 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_24[] __initconst = {
+static const char *ALLOWED_FW_23[] __initconst = {
 	"14D1EMS1.103", // Modern 14 B10MW (#100)
 	NULL
 };
 
-static struct msi_ec_conf CONF24 __initdata = {
-	.allowed_fw = ALLOWED_FW_24, // WMI1 based
+static struct msi_ec_conf CONF23 __initdata = {
+	.allowed_fw = ALLOWED_FW_23, // WMI1 based
 	.charge_control_address = 0xef,
 	.webcam = {
 		.address       = 0x2E,
@@ -1787,15 +1721,15 @@ static struct msi_ec_conf CONF24 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_25[] __initconst = {
+static const char *ALLOWED_FW_24[] __initconst = {
 	"14F1EMS1.207", // Prestige 14 Evo B13M
 	"14F1EMS1.209", // Summit E14 Flip Evo A13MT
 	"14F1EMS1.211",
 	NULL
 };
 
-static struct msi_ec_conf CONF25 __initdata = {
-	.allowed_fw = ALLOWED_FW_25, // WMI2 based
+static struct msi_ec_conf CONF24 __initdata = {
+	.allowed_fw = ALLOWED_FW_24, // WMI2 based
 	.charge_control_address = 0xd7,
 	.webcam = {
 		.address       = 0x2e,
@@ -1856,13 +1790,13 @@ static struct msi_ec_conf CONF25 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_26[] __initconst = {
+static const char *ALLOWED_FW_25[] __initconst = {
 	"14DLEMS1.105", // Modern 14 B5M
 	NULL
 };
 
-static struct msi_ec_conf CONF26 __initdata = {
-	.allowed_fw = ALLOWED_FW_26, // WMI1 based
+static struct msi_ec_conf CONF25 __initdata = {
+	.allowed_fw = ALLOWED_FW_25, // WMI1 based
 	.charge_control_address = 0xef,
 	.webcam = {
 		.address       = 0x2e,
@@ -1923,13 +1857,13 @@ static struct msi_ec_conf CONF26 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_27[] __initconst = {
+static const char *ALLOWED_FW_26[] __initconst = {
 	"17S2IMS1.113", // Raider GE78 HX Smart Touchpad 13V
 	NULL
 };
 
-static struct msi_ec_conf CONF27 __initdata = {
-	.allowed_fw = ALLOWED_FW_27, // WMI2 based
+static struct msi_ec_conf CONF26 __initdata = {
+	.allowed_fw = ALLOWED_FW_26, // WMI2 based
 	.charge_control_address = 0xd7,
 	.webcam = {
 		.address       = 0x2e,
@@ -1991,7 +1925,7 @@ static struct msi_ec_conf CONF27 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_28[] __initconst = {
+static const char *ALLOWED_FW_27[] __initconst = {
 	"1822EMS1.105", // Titan 18 HX A14V
 	"1822EMS1.109", // WMI 2.8
 	"1822EMS1.111",
@@ -2001,8 +1935,8 @@ static const char *ALLOWED_FW_28[] __initconst = {
 	NULL
 };
 
-static struct msi_ec_conf CONF28 __initdata = {
-	.allowed_fw = ALLOWED_FW_28,
+static struct msi_ec_conf CONF27 __initdata = {
+	.allowed_fw = ALLOWED_FW_27,
 	.charge_control_address = 0xd7,
 	// .usb_share  {
 	// 	.address      = 0xbf, // states: 0x08 || 0x28
@@ -2068,13 +2002,13 @@ static struct msi_ec_conf CONF28 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_29[] __initconst = {
+static const char *ALLOWED_FW_28[] __initconst = {
 	"16V5EMS1.107", // MSI GS66 12UGS
 	NULL
 };
 
-static struct msi_ec_conf CONF29 __initdata = {
-	.allowed_fw = ALLOWED_FW_29,
+static struct msi_ec_conf CONF28 __initdata = {
+	.allowed_fw = ALLOWED_FW_28,
 	.charge_control_address = 0xd7,
 	// .usb_share  {
 	// 	.address      = 0xbf,
@@ -2139,14 +2073,14 @@ static struct msi_ec_conf CONF29 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_30[] __initconst = {
+static const char *ALLOWED_FW_29[] __initconst = {
 	"17Q2IMS1.107", // Titan GT77HX 13VH
 	"17Q2IMS1.10D",
 	NULL
 };
 
-static struct msi_ec_conf CONF30 __initdata = {
-	.allowed_fw = ALLOWED_FW_30, // WMI2 based
+static struct msi_ec_conf CONF29 __initdata = {
+	.allowed_fw = ALLOWED_FW_29, // WMI2 based
 	.charge_control_address = 0xd7,
 	.webcam = {
 		.address       = 0x2e,
@@ -2208,13 +2142,13 @@ static struct msi_ec_conf CONF30 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_31[] __initconst = {
+static const char *ALLOWED_FW_30[] __initconst = {
 	"16Q4EMS1.110", // GS65 Stealth
 	NULL
 };
 
-static struct msi_ec_conf CONF31 __initdata = {
-	.allowed_fw = ALLOWED_FW_31,
+static struct msi_ec_conf CONF30 __initdata = {
+	.allowed_fw = ALLOWED_FW_30,
 	.charge_control_address = 0xef,
 	.webcam = {
 		.address       = 0x2e,
@@ -2276,15 +2210,15 @@ static struct msi_ec_conf CONF31 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_32[] __initconst = {
+static const char *ALLOWED_FW_31[] __initconst = {
 	"158PIMS1.207", // Bravo 15 B7E
 	"158PIMS1.112", // Bravo 15 B7ED
 	"158PIMS1.114",
 	NULL
 };
 
-static struct msi_ec_conf CONF32 __initdata = {
-	.allowed_fw = ALLOWED_FW_32, // WMI2 based
+static struct msi_ec_conf CONF31 __initdata = {
+	.allowed_fw = ALLOWED_FW_31, // WMI2 based
 	.charge_control_address = 0xd7,
 	.webcam = {
 		.address       = 0x2e,
@@ -2345,13 +2279,13 @@ static struct msi_ec_conf CONF32 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_33[] __initconst = {
+static const char *ALLOWED_FW_32[] __initconst = {
 	"17N1EMS1.109", // MSI Creator Z17 A12UGST
 	NULL
 };
 
-static struct msi_ec_conf CONF33 __initdata = {
-	.allowed_fw = ALLOWED_FW_33,
+static struct msi_ec_conf CONF32 __initdata = {
+	.allowed_fw = ALLOWED_FW_32,
 	.charge_control_address = 0xd7,
 	.webcam = {
 		.address       = 0x2e,
@@ -2412,13 +2346,13 @@ static struct msi_ec_conf CONF33 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_34[] __initconst = {
+static const char *ALLOWED_FW_33[] __initconst = {
 	"14C6EMS1.109", // Prestige 14 Evo A12M
 	NULL
 };
 
-static struct msi_ec_conf CONF34 __initdata = {
-	.allowed_fw = ALLOWED_FW_34,
+static struct msi_ec_conf CONF33 __initdata = {
+	.allowed_fw = ALLOWED_FW_33,
 	.charge_control_address = 0xd7,
 	.webcam = {
 		.address       = 0x2e,
@@ -2479,13 +2413,13 @@ static struct msi_ec_conf CONF34 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_35[] __initconst = {
+static const char *ALLOWED_FW_34[] __initconst = {
 	"15M2IMS1.113", // Raider GE68HX 13VG
 	NULL
 };
 
-static struct msi_ec_conf CONF35 __initdata = {
-	.allowed_fw = ALLOWED_FW_35, // WMI2 based
+static struct msi_ec_conf CONF34 __initdata = {
+	.allowed_fw = ALLOWED_FW_34, // WMI2 based
 	.charge_control_address = 0xd7,
 	// .usb_share = {
 	//  	.address      = 0xbf, // states: 0x08 || 0x28
@@ -2552,14 +2486,14 @@ static struct msi_ec_conf CONF35 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_36[] __initconst = {
+static const char *ALLOWED_FW_35[] __initconst = {
 	"1585EMS1.112", // Katana 15 B13VGK
 	"1585EMS1.115", // Katana 15 B13VFK
 	NULL
 };
 
-static struct msi_ec_conf CONF36 __initdata = {
-	.allowed_fw = ALLOWED_FW_36, // WMI2 based
+static struct msi_ec_conf CONF35 __initdata = {
+	.allowed_fw = ALLOWED_FW_35, // WMI2 based
 	.charge_control_address = 0xd7,
 	.webcam = {
 		.address       = 0x2e,
@@ -2620,13 +2554,13 @@ static struct msi_ec_conf CONF36 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_37[] __initconst = {
+static const char *ALLOWED_FW_36[] __initconst = {
 	"15M1IMS1.113", // Vector GP68 HX 12V
 	NULL
 };
 
-static struct msi_ec_conf CONF37 __initdata = {
-	.allowed_fw = ALLOWED_FW_37, // WMI2 based
+static struct msi_ec_conf CONF36 __initdata = {
+	.allowed_fw = ALLOWED_FW_36, // WMI2 based
 	.charge_control_address = 0xd7,
 	// .usb_share  {
 	// 	.address      = 0xbf, // states: 0x08 || 0x28
@@ -2691,14 +2625,14 @@ static struct msi_ec_conf CONF37 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_38[] __initconst = {
+static const char *ALLOWED_FW_37[] __initconst = {
 	"17E8IMS1.106", // GL75 Leopard 10SCXR/MS-17E8
 	"17E8EMS1.101",
 	NULL
 };
 
-static struct msi_ec_conf CONF38 __initdata = {
-	.allowed_fw = ALLOWED_FW_38, // WMI1 based
+static struct msi_ec_conf CONF37 __initdata = {
+	.allowed_fw = ALLOWED_FW_37, // WMI1 based
 	.charge_control_address = 0xef,
 	.webcam = {
 		.address       = 0x2e,
@@ -2757,7 +2691,7 @@ static struct msi_ec_conf CONF38 __initdata = {
 		.max_state        = 3,
 	},
 };
-static const char *ALLOWED_FW_39[] __initconst = {
+static const char *ALLOWED_FW_38[] __initconst = {
 	"16R8IMS1.107", // Thin GF63 12VE
 	"16R8IMS1.108", // Thin GF63 12UCX
 	"16R8IMS1.111", // Thin GF63 12V(E/F)
@@ -2765,8 +2699,8 @@ static const char *ALLOWED_FW_39[] __initconst = {
 	NULL
 };
 
-static struct msi_ec_conf CONF39 __initdata = {
-	.allowed_fw = ALLOWED_FW_39, // WMI2 based
+static struct msi_ec_conf CONF38 __initdata = {
+	.allowed_fw = ALLOWED_FW_38, // WMI2 based
 	.charge_control_address = 0xd7,
 	.webcam = {
 		.address       = 0x2e,
@@ -2828,13 +2762,13 @@ static struct msi_ec_conf CONF39 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_40[] __initconst = {
+static const char *ALLOWED_FW_39[] __initconst = {
 	"17S1IMS1.105", // Raider GE78HX 13VI
 	NULL
 };
 
-static struct msi_ec_conf CONF40 __initdata = {
-	.allowed_fw = ALLOWED_FW_40, // WMI2 based
+static struct msi_ec_conf CONF39 __initdata = {
+	.allowed_fw = ALLOWED_FW_39, // WMI2 based
 	.charge_control_address = 0xd7,
 	// .usb_share = {
 	//  	.address      = 0xbf, // states: 0x08 || 0x28
@@ -2901,13 +2835,13 @@ static struct msi_ec_conf CONF40 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_41[] __initconst = {
+static const char *ALLOWED_FW_40[] __initconst = {
 	"15M1IMS2.111", // MSI Vector 16 HX A14VHG
 	NULL
 };
 
-static struct msi_ec_conf CONF41 __initdata = {
-	.allowed_fw = ALLOWED_FW_41, // WMI2 based
+static struct msi_ec_conf CONF40 __initdata = {
+	.allowed_fw = ALLOWED_FW_40, // WMI2 based
 	.charge_control_address = 0xd7,
 	.webcam = {
 		.address       = 0x2e,
@@ -2966,14 +2900,14 @@ static struct msi_ec_conf CONF41 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_42[] __initconst = {
+static const char *ALLOWED_FW_41[] __initconst = {
 	"14L1EMS1.307", // Modern 14 H D13M
 	"14L1EMS1.308",
 	NULL
 };
 
-static struct msi_ec_conf CONF42 __initdata = {
-	.allowed_fw = ALLOWED_FW_42, // WMI2 based
+static struct msi_ec_conf CONF41 __initdata = {
+	.allowed_fw = ALLOWED_FW_41, // WMI2 based
 	.charge_control_address = 0xd7,
 	.webcam = {
 		.address       = MSI_EC_ADDR_UNSUPP,
@@ -3034,14 +2968,14 @@ static struct msi_ec_conf CONF42 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_43[] __initconst = {
+static const char *ALLOWED_FW_42[] __initconst = {
 	"14DKEMS1.104", // Modern 14 B4MW
 	"14DKEMS1.105",
 	NULL
 };
 
-static struct msi_ec_conf CONF43 __initdata = {
-	.allowed_fw = ALLOWED_FW_43, // WMI1 based
+static struct msi_ec_conf CONF42 __initdata = {
+	.allowed_fw = ALLOWED_FW_42, // WMI1 based
 	.charge_control_address = 0xef,
 	.webcam = {
 		.address       = 0x2e,
@@ -3102,13 +3036,13 @@ static struct msi_ec_conf CONF43 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_44[] __initconst = {
+static const char *ALLOWED_FW_43[] __initconst = {
 	"17LNIMS1.505", // Katana A17 AI B8VF
 	NULL
 };
 
-static struct msi_ec_conf CONF44 __initdata = {
-	.allowed_fw = ALLOWED_FW_44, // WMI2 based
+static struct msi_ec_conf CONF43 __initdata = {
+	.allowed_fw = ALLOWED_FW_43, // WMI2 based
 	.charge_control_address = 0xd7,
 	// .usb_share = {
 	//  	.address      = 0xbf, // states: 0x08 || 0x28
@@ -3175,13 +3109,13 @@ static struct msi_ec_conf CONF44 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_45[] __initconst = {
+static const char *ALLOWED_FW_44[] __initconst = {
 	"1545IMS1.109", // Raider GE67 HX - 12U
 	NULL
 };
 
-static struct msi_ec_conf CONF45 __initdata = {
-	.allowed_fw = ALLOWED_FW_45, // WMI2 based
+static struct msi_ec_conf CONF44 __initdata = {
+	.allowed_fw = ALLOWED_FW_44, // WMI2 based
 	.charge_control_address = 0xd7,
 	// .usb_share = {
 	//  	.address      = 0xbf, // states: 0x08 (off) || 0x28 (on)
@@ -3248,7 +3182,7 @@ static struct msi_ec_conf CONF45 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_46[] __initconst = {
+static const char *ALLOWED_FW_45[] __initconst = {
 	"16W1EMS1.102", // GF65 Thin 9SE(X(R)) / 9SD
 	"16W1EMS1.103",
 	"16W1EMS1.104",
@@ -3257,8 +3191,8 @@ static const char *ALLOWED_FW_46[] __initconst = {
 	NULL
 };
 
-static struct msi_ec_conf CONF46 __initdata = {
-	.allowed_fw = ALLOWED_FW_46, // WMI1 based
+static struct msi_ec_conf CONF45 __initdata = {
+	.allowed_fw = ALLOWED_FW_45, // WMI1 based
 	.charge_control_address = 0xef,
 	.webcam = {
 		.address       = 0x2e,
@@ -3321,15 +3255,15 @@ static struct msi_ec_conf CONF46 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_47[] __initconst = {
+static const char *ALLOWED_FW_46[] __initconst = {
 	"17KKIMS1.108", // Alpha 17 C7VF / C7VG
 	"17KKIMS1.109",
 	"17KKIMS1.114",
 	NULL
 };
 
-static struct msi_ec_conf CONF47 __initdata = {
-	.allowed_fw = ALLOWED_FW_47, // WMI2 based
+static struct msi_ec_conf CONF46 __initdata = {
+	.allowed_fw = ALLOWED_FW_46, // WMI2 based
 	.charge_control_address = 0xd7,
 	// .usb_share = {
 	//  	.address      = 0xbf, // states: 0x08 || 0x28
@@ -3393,14 +3327,14 @@ static struct msi_ec_conf CONF47 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_48[] __initconst = {
+static const char *ALLOWED_FW_47[] __initconst = {
 	"158NIMS1.10D", // Bravo 15 C7UCX
 	"158NIMS1.30C", // Bravo 15 C7VFKP
 	NULL
 };
 
-static struct msi_ec_conf CONF48 __initdata = {
-	.allowed_fw = ALLOWED_FW_48, // WMI2 based
+static struct msi_ec_conf CONF47 __initdata = {
+	.allowed_fw = ALLOWED_FW_47, // WMI2 based
 	.charge_control_address = 0xd7,
 	.webcam = { // tested
 		.address       = 0x2e,
@@ -3460,15 +3394,15 @@ static struct msi_ec_conf CONF48 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_49[] __initconst = {
+static const char *ALLOWED_FW_48[] __initconst = {
 	"16R4EMS1.101", // GF63 Thin 10SCX(R) / 10SCS(R)
 	"16R4EMS1.102",
 	"16R5EMS1.102", // GF63 Thin 10U(C/D) / 10SC
 	NULL
 };
 
-static struct msi_ec_conf CONF49 __initdata = {
-	.allowed_fw = ALLOWED_FW_49, // WMI1 based
+static struct msi_ec_conf CONF48 __initdata = {
+	.allowed_fw = ALLOWED_FW_48, // WMI1 based
 	.charge_control_address = 0xef,
 	.webcam = {
 		.address       = 0x2e,
@@ -3530,13 +3464,13 @@ static struct msi_ec_conf CONF49 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_50[] __initconst = {
+static const char *ALLOWED_FW_49[] __initconst = {
 	"1584EMS1.112", // Katana GF66 12UC
 	NULL
 };
 
-static struct msi_ec_conf CONF50 __initdata = {
-	.allowed_fw = ALLOWED_FW_50, // WMI2 based
+static struct msi_ec_conf CONF49 __initdata = {
+	.allowed_fw = ALLOWED_FW_49, // WMI2 based
 	.charge_control_address = 0xd7,
 	.webcam = {
 		.address       = 0x2e,
@@ -3597,7 +3531,7 @@ static struct msi_ec_conf CONF50 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_51[] __initconst = {
+static const char *ALLOWED_FW_50[] __initconst = {
 	"158MEMS1.101", // Bravo 15 B5ED
 	"158KEMS1.104",	// Bravo 15 B5DD
 	"158KEMS1.106",
@@ -3605,8 +3539,8 @@ static const char *ALLOWED_FW_51[] __initconst = {
 	NULL
 };
 
-static struct msi_ec_conf CONF51 __initdata = {
-	.allowed_fw = ALLOWED_FW_51, // WMI1 based
+static struct msi_ec_conf CONF50 __initdata = {
+	.allowed_fw = ALLOWED_FW_50, // WMI1 based
 	.charge_control_address = 0xef,
 	.webcam = {
 		.address       = 0x2e,
@@ -3667,7 +3601,7 @@ static struct msi_ec_conf CONF51 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_52[] __initconst = {
+static const char *ALLOWED_FW_51[] __initconst = {
 	"16V1EMS1.109", // GS66 Stealth 10SFS
 	"16V1EMS1.116",
 	"16V1EMS1.118", // GS66 Stealth 10SE
@@ -3675,8 +3609,8 @@ static const char *ALLOWED_FW_52[] __initconst = {
 	NULL
 };
 
-static struct msi_ec_conf CONF52 __initdata = {
-	.allowed_fw = ALLOWED_FW_52, // WMI1 based
+static struct msi_ec_conf CONF51 __initdata = {
+	.allowed_fw = ALLOWED_FW_51, // WMI1 based
 	.charge_control_address = 0xef,
 	.webcam = {
 		.address       = 0x2e,
@@ -3737,13 +3671,13 @@ static struct msi_ec_conf CONF52 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_53[] __initconst = {
+static const char *ALLOWED_FW_52[] __initconst = {
 	"159KIMS1.108", // Summit A16 AI+ A3HMTG, Prestige A16 AI+ A3HMG
 	NULL
 }; // lid position sensor requires 0xD9 bit 0 being set to work
 
-static struct msi_ec_conf CONF53 __initdata = {
-	.allowed_fw = ALLOWED_FW_53, // WMI2 based, Center S app
+static struct msi_ec_conf CONF52 __initdata = {
+	.allowed_fw = ALLOWED_FW_52, // WMI2 based, Center S app
 	.charge_control_address = 0xd7,
 	.webcam = { // have no ability to power off camera module, just plastic cover
 		.address       = MSI_EC_ADDR_UNSUPP,
@@ -3801,13 +3735,13 @@ static struct msi_ec_conf CONF53 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_54[] __initconst = {
+static const char *ALLOWED_FW_53[] __initconst = {
 	"16R8IMS2.112", // Thin 15 B12UCX / B12VE
 	NULL
 };
 
-static struct msi_ec_conf CONF54 __initdata = {
-	.allowed_fw = ALLOWED_FW_54, // WMI2 based
+static struct msi_ec_conf CONF53 __initdata = {
+	.allowed_fw = ALLOWED_FW_53, // WMI2 based
 	.charge_control_address = 0xd7,
 	.webcam = { // not present in app, but ec supports
 		.address       = 0x2e,
@@ -3866,13 +3800,13 @@ static struct msi_ec_conf CONF54 __initdata = {
 	},
 };
 
-static const char *ALLOWED_FW_55[] __initconst = {
+static const char *ALLOWED_FW_54[] __initconst = {
 	"17G1EMS1.107", // GS75 Stealth 9SF
 	NULL
 };
 
-static struct msi_ec_conf CONF55 __initdata = {
-	.allowed_fw = ALLOWED_FW_55, // WMI1 based
+static struct msi_ec_conf CONF54 __initdata = {
+	.allowed_fw = ALLOWED_FW_54, // WMI1 based
 	.charge_control_address = 0xef,
 	.webcam = {
 		.address       = 0x2e,
@@ -3989,7 +3923,6 @@ static struct msi_ec_conf *CONFIGURATIONS[] __initdata = {
 	&CONF52,
 	&CONF53,
 	&CONF54,
-	&CONF55,
 	NULL
 };
 
