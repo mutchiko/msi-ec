@@ -691,6 +691,8 @@ static const char *ALLOWED_FW_9[] __initconst = {
 	"14JKEMS1.104",
 	"14JKEMS1.300", // Modern 14 C7M
 	"14JKEMS1.600",
+	"1551EMS1.106", // Modern 15 A10M
+	"1551EMS1.107",
 	NULL
 };
 
@@ -716,12 +718,12 @@ static struct msi_ec_conf CONF9 __initdata = {
 		.modes = {
 			{ SM_ECO_NAME,     0xc2 },
 			{ SM_COMFORT_NAME, 0xc1 },
-			{ SM_SPORT_NAME,   0xc0 },
+			{ SM_TURBO_NAME,   0xc0 },
 			MSI_EC_MODE_NULL
 		},
 	},
 	.super_battery = {
-		.address = MSI_EC_ADDR_UNSUPP, // unsupported or enabled by ECO shift
+		.address = MSI_EC_ADDR_UNSUPP,
 		.mask    = 0x0f,
 	},
 	.fan_mode = {
@@ -827,6 +829,8 @@ static struct msi_ec_conf CONF10 __initdata = {
 static const char *ALLOWED_FW_11[] __initconst = {
 	"16S6EMS1.111", // Prestige 15 A11SCX
 	"16S6EMS1.114",
+	"13Q2EMS1.107", // Prestige 13 EVO AI
+	"13Q2EMS1.108",
 	NULL
 };
 
@@ -2999,6 +3003,8 @@ static struct msi_ec_conf CONF41 __initdata = {
 static const char *ALLOWED_FW_42[] __initconst = {
 	"14L1EMS1.307", // Modern 14 H D13M
 	"14L1EMS1.308",
+	"14J1IMS1.109", // Modern 14 C12M
+	"14J1IMS1.215",
 	NULL
 };
 
@@ -3006,7 +3012,7 @@ static struct msi_ec_conf CONF42 __initdata = {
 	.allowed_fw = ALLOWED_FW_42, // WMI2 based
 	.charge_control_address = 0xd7,
 	.webcam = {
-		.address       = MSI_EC_ADDR_UNSUPP,
+		.address       = 0x2e,
 		.block_address = 0x2f,
 		.bit           = 1,
 	},
@@ -3051,7 +3057,7 @@ static struct msi_ec_conf CONF42 __initdata = {
 	},
 	.leds = {
 		.micmute_led_address = 0x2c,
-		.mute_led_address    = MSI_EC_ADDR_UNSUPP,
+		.mute_led_address    = 0x2d,
 		.bit                 = 1,
 	},
 	.kbd_bl = {
