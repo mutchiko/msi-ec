@@ -2505,6 +2505,8 @@ static struct msi_ec_conf CONF34 __initdata = {
 static const char *ALLOWED_FW_35[] __initconst = {
 	"15M2IMS1.110", // Raider GE68HX 13VG
 	"15M2IMS1.113",
+	"15FKIMS1.106", // Stealth A16 AI+ A3XVFG / A3XVGG
+	"15FKIMS1.109",
 	NULL
 };
 
