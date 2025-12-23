@@ -131,6 +131,7 @@ static const char *ALLOWED_FW_G1_1[] __initconst = {
 	"17F2EMS1.104",
 	"17F2EMS1.106",
 	"17F2EMS1.107",
+	"17F3EMS1.103", // GF75 Thin 9SD
 	"17F3EMS2.103", // GF75 Thin 10SER
 	"17F4EMS2.100", // GF75 Thin 9SCSR
 	"17F5EMS1.102", // GF75 Thin 10UEK
@@ -274,11 +275,14 @@ static struct msi_ec_conf CONF_G1_2 __initdata = {
 
 static const char *ALLOWED_FW_G1_3[] __initconst = {
 	"1541EMS1.113", // GE66 Raider 10SF
-	"1542EMS1.102", // GP66 Leopard 10UG / 10UE / 10UH
+	"1542EMS1.101", // GP66 Leopard 10UG / 10UE / 10UH
+	"1542EMS1.102",
 	"1542EMS1.104",
+	"16Q2EMS1.106", // GS65 Stealth Thin 8RE
 	"16Q2EMS1.107", // GS65 Stealth Thin 8RF
 	"16Q2EMS1.T40",
-	"16Q4EMS1.109", // GS65 Stealth 8S / 9S(D)
+	"16Q4EMS1.108", // GS65 Stealth 8S / 9S(D/F)
+	"16Q4EMS1.109",
 	"16Q4EMS1.110",
 	"16V1EMS1.109", // GS66 Stealth 10SFS
 	"16V1EMS1.116",
@@ -503,6 +507,7 @@ static const char *ALLOWED_FW_G1_6[] __initconst = {
 	"155LEMS1.106",
 	"15HKEMS1.102", // Modern 15 B7M
 	"15HKEMS1.104",
+	"15HKEMS1.500",
 	NULL
 };
 
@@ -575,7 +580,8 @@ static const char *ALLOWED_FW_G1_7[] __initconst = {
 	"16R3EMS1.104",
 	"16R4EMS1.101", // GF63 Thin 10SCX(R) / 10SCS(R)
 	"16R4EMS1.102",
-	"16R4EMS2.102", // GF63 Thin 9SCSR
+	"16R4EMS2.101", // GF63 Thin 9SCSR
+	"16R4EMS2.102",
 	"16R5EMS1.101", // GF63 Thin 10U(C/D) / 10SC
 	"16R5EMS1.102",
 	"16W1EMS1.102", // GF65 Thin 9SE(X(R)) / 9SD
@@ -717,8 +723,10 @@ static struct msi_ec_conf CONF_G1_8 __initdata = {
 
 static const char *ALLOWED_FW_G1_9[] __initconst = {
 	"17G1EMS2.106", // P75  CREATOR 9SG
-	"17G1EMS1.107", // GS75 Stealth 9SF
-	"17G3EMS1.115", // GS75 Stealth 10SF
+	"17G1EMS1.102", // GS75 Stealth 9SF
+	"17G1EMS1.107",
+	"17G3EMS1.113", // GS75 Stealth 10SF
+	"17G3EMS1.115",
 	NULL
 };
 
@@ -854,9 +862,11 @@ static const char *ALLOWED_FW_G1_11[] __initconst = {
 	"158MEMS1.100", // Bravo 15 B5ED
 	"158MEMS1.101",
 	"158KEMS1.104", // Bravo 15 B5DD
-	"158KEMS1.108",
 	"158KEMS1.106",
+	"158KEMS1.107",
+	"158KEMS1.108",
 	"158KEMS1.109",
+	"158KEMS1.111",
 	NULL
 };
 
@@ -1000,7 +1010,8 @@ static const char *ALLOWED_FW_G2_0[] __initconst = {
 	"1552EMS1.118",
 	"1552EMS1.119",
 	"1552EMS1.120",
-	"159KIMS1.108", // Summit A16 AI+ A3HMTG, Prestige A16 AI+ A3HMG
+	"159KIMS1.107", // Prestige A16 AI+ A3HMG
+	"159KIMS1.108", // Summit A16 AI+ A3HMTG
 	"159KIMS1.110",
 	"15H1IMS1.214", // Modern 15 B13M
 	NULL
@@ -1072,23 +1083,30 @@ static const char *ALLOWED_FW_G2_1[] __initconst = {
 	"14C4EMS1.120", // Prestige 14 A11SCX
 	"14C6EMS1.109", // Prestige 14 Evo A12M
 	"1581EMS1.107", // Katana GF66 11UE / 11UG
+	"1582EMS1.105", // Pulse GL66 11UDK
 	"1582EMS1.107", // Katana GF66 11UC / 11UD
-	"1583EMS1.110", // Pulse  GL66 12UGK / Crosshair 15 B12UEZ / Katana GF66-12UG
+	"1583EMS1.105", // Crosshair 15 B12UEZ / B12UGSZ
+	"1583EMS1.110", // Pulse  GL66 12UGK / Katana GF66 12UG
+	"1583EMS1.111",
 	"1584EMS1.104", // Katana GF66 12U(C/D) (ENE)
 	"1584EMS1.112",
 	"1584IMS1.106", // Katana GF66 12UDO (ITE) (#467)
 	"1585EMS1.112", // Katana 15 B13VGK
 	"1585EMS1.113",
 	"1585EMS1.115", // Pulse 15 B13VGK
+	"1585EMS2.110", // Katana 15 B12VGK
 	"1585EMS2.115", // Katana 15 B12VFK
 	"158NIMS1.109", // Bravo 15 C7V
 	"158NIMS1.10D", // Bravo 15 C7UCX
 	"158NIMS1.10E",
 	"158NIMS1.30C", // Bravo 15 C7VFKP
-	"158NIMS1.505", // Katana A15 AI B8VF
-	"158PIMS1.207", // Bravo 15 B7E
-	"158PIMS1.112", // Bravo 15 B7ED
+	"158NIMS1.502", // Katana A15 AI B8V(F)
+	"158NIMS1.505",
+	"158PIMS1.106", // Bravo 15 B7ED
+	"158PIMS1.112",
 	"158PIMS1.114",
+	"158PIMS1.207", // Bravo 15 B7E
+	"1591EMS1.108", // Summit E16 Flip A11UCT
 	"1592EMS1.111", // Summit E16 Flip A12UCT / A12MT
 	"1594EMS1.109", // Prestige 16 Studio A13VE
 	"1596EMS1.105", // Summit E16 AI Studio A1VETG
@@ -1099,18 +1117,18 @@ static const char *ALLOWED_FW_G2_1[] __initconst = {
 	"16S6EMS1.111", // Prestige 15 A11SCX
 	"16S6EMS1.114",
 	"16V6EMS1.103", // Stealth 15 A13V
+	"17L1EMS1.103", // Katana GF76 11UE
 	"17L1EMS1.105", // Crosshair 17 A11UEK
 	"17L1EMS1.106", // Katana GF76 11UG
-	"17L1EMS1.107", // Katana GF76 11UE
-	"17L2EMS1.108", // Katana 17 B11UCX, Katana GF76 11UC
+	"17L1EMS1.107",
+	"17L2EMS1.106", // Katana GF76 11UC/11UD
+	"17L2EMS1.108", // Katana 17 B11UCX
 	"17L3EMS1.106", // Crosshair 17 B12UGZ
 	"17L3EMS1.109", // Katana GF76 12UG
 	"17L4EMS1.112", // Katana GF76 12UC
-	"17L5EMS1.111", // Pulse/Katana 17 B13V/GK
-	"17L5EMS1.115",
-	"17L5EMS2.115", // Katana 17 B12VEK
 	"17LNIMS1.10E", // Bravo 17 C7VE
 	"17LNIMS1.505", // Katana A17 AI B8VF
+	"17M1EMS2.113", // Creator 17 B11UE
 	NULL
 };
 
@@ -1177,7 +1195,8 @@ static struct msi_ec_conf CONF_G2_1 __initdata = {
 };
 
 static const char *ALLOWED_FW_G2_2[] __initconst = {
-	"1543EMS1.113", // GP66 Leopard 11UG / GE66 Raider 11UE
+	"1543EMS1.108", // GP66 Leopard 11UG
+	"1543EMS1.113", // GE66 Raider 11UE
 	"1543EMS1.115",
 	"1544EMS1.112", // Vector GP66 12UGS
 	"1545IMS1.109", // Raider GE67 HX 12U
@@ -1194,6 +1213,7 @@ static const char *ALLOWED_FW_G2_2[] __initconst = {
 	"17KKIMS1.108", // Alpha 17 C7VF / C7VG
 	"17KKIMS1.109",
 	"17KKIMS1.114",
+	"17M1EMS1.113", // Stealth GS76 11UG
 	NULL
 };
 
@@ -1260,6 +1280,7 @@ static struct msi_ec_conf CONF_G2_2 __initdata = {
 };
 
 static const char *ALLOWED_FW_G2_3[] __initconst = {
+	"14F1EMS1.112", // Summit E14 Flip Evo A12MT
 	"14F1EMS1.114", // Summit E14 Evo A12M
 	"14F1EMS1.115",
 	"14F1EMS1.116",
@@ -1275,6 +1296,7 @@ static const char *ALLOWED_FW_G2_3[] __initconst = {
 	"14L1EMS1.311",
 	"14J1IMS1.109", // Modern 14 C12M
 	"14J1IMS1.205",
+	"14J1IMS1.209",
 	"14J1IMS1.215",
 	"14N1EMS1.104", // Prestige 14 AI Evo C1MG
 	"14N1EMS1.307", // Prestige 14 AI Evo C2HMG
@@ -1411,6 +1433,76 @@ static struct msi_ec_conf CONF_G2_4 __initdata = {
 	},
 };
 
+static const char *ALLOWED_FW_G2_5[] __initconst = {
+	"14K1EMS1.103", // Stealth 14 Studio A13VF
+	"14K1EMS1.108",
+	"14K2EMS1.104", // Stealth 14 AI Studio A1VGG / A1VFG
+	"14K2EMS1.107",
+	NULL
+};
+
+static struct msi_ec_conf CONF_G2_5 __initdata = {
+	.allowed_fw = ALLOWED_FW_G2_5, // new
+	.charge_control_address = 0xd7,
+	.webcam = {
+		.address       = 0x2e,
+		.block_address = 0x2f,
+		.bit           = 1,
+	},
+	.fn_win_swap = {
+		.address = 0xe8,
+		.bit     = 4,
+		.invert  = false,
+	},
+	.cooler_boost = {
+		.address = 0x98,
+		.bit     = 7,
+	},
+	.shift_mode = {
+		.address = 0xd2,
+		.modes = {
+			{ SM_ECO_NAME,     0xc2 },
+			{ SM_COMFORT_NAME, 0xc1 },
+			{ SM_TURBO_NAME,   0xc4 },
+			MSI_EC_MODE_NULL
+		},
+	},
+	.super_battery = {
+		.address = 0xeb,
+		.mask    = 0x0f,
+	},
+	.fan_mode = {
+		.address = 0xd4,
+		.modes = {
+			{ FM_AUTO_NAME,     0x0d },
+			{ FM_SILENT_NAME,   0x1d },
+			{ FM_ADVANCED_NAME, 0x8d },
+			MSI_EC_MODE_NULL
+		},
+	},
+	.cpu = {
+		.rt_temp_address      = 0x68,
+		.rt_fan_speed_address = 0x71,
+	},
+	.gpu = {
+		.rt_temp_address      = 0x80,
+		.rt_fan_speed_address = 0x89,
+	},
+	.leds = {
+		.micmute_led_address = 0x2c,
+		.mute_led_address    = 0x2d,
+		.bit                 = 1,
+	},
+	.kbd_bl = {
+		.bl_mode_address  = MSI_EC_ADDR_UNSUPP,
+		.bl_modes         = { 0x00, 0x08 },
+		.max_mode         = 1,
+		.bl_state_address = MSI_EC_ADDR_UNSUPP,
+		.state_base_value = 0x80,
+		.max_state        = 3,
+	},
+};
+
 static const char *ALLOWED_FW_G2_6[] __initconst = {
 	"16R6EMS1.104", // GF63 Thin 11UC / 11SC
 	"16R6EMS1.106",
@@ -1421,10 +1513,12 @@ static const char *ALLOWED_FW_G2_6[] __initconst = {
 	"16R8IMS1.108", // Thin GF63 12UCX
 	"16R8IMS1.111", // Thin GF63 12V(E/F)
 	"16R8IMS1.117", // Thin GF63 12UC
-	"16R8IMS2.112", // Thin 15 B12UCX / B12VE
+	"16R8IMS2.111", // Thin 15 B12UCX / B12VE
+	"16R8IMS2.112",
 	"16R8IMS2.117",
 	"16RKIMS1.110", // Thin A15 B7VF
 	"16RKIMS1.111",
+	"16RKIMS2.108",
 	NULL
 };
 
@@ -1492,14 +1586,21 @@ static struct msi_ec_conf CONF_G2_6 __initdata = {
 
 static const char *ALLOWED_FW_G2_10[] __initconst = {
 	"1562EMS1.117", // Stealth 15M A11SEK
-	"1563EMS1.115", // Stealth 15M A11UEK
+	"1563EMS1.106", // Stealth 15M A11UEK
+	"1563EMS1.115",
+	"1587EMS1.102", // Katana 15 HX B14WEK
+	"15F2EMS1.109", // Stealth 16 Studio A13VG
+	"15F4EMS1.105", // Stealth 16 AI Studio A1VFG
 	"15FKIMS1.106", // Stealth A16 AI+ A3XVFG / A3XVGG
 	"15FKIMS1.109",
-	"15M1IMS1.110", // Vector GP68 HX 13V
+	"15K2EMS1.106", // Cyborg 15 AI A1VFK
+	"15M1IMS1.109", // Vector GP68 HX 13V
+	"15M1IMS1.110",
 	"15M1IMS1.113", // Vector GP68 HX 12V
 	"15M1IMS2.104", // Raider GE68 HX 14VIG
 	"15M1IMS2.105", // Vector 16 HX A13V* / A14V*
 	"15M1IMS2.111",
+	"15M1IMS2.112",
 	"15M2IMS1.110", // Raider GE68HX 13V(F/G)
 	"15M2IMS1.112", // Vector GP68HX 13VF
 	"15M2IMS1.113",
@@ -1508,13 +1609,25 @@ static const char *ALLOWED_FW_G2_10[] __initconst = {
 	"15M3EMS1.107",
 	"15M3EMS1.109",
 	"15M3EMS1.110",
+	"15M3EMS1.112",
+	"15P2EMS1.108", // Sword 16 HX B13V / B14V
+	"15P2EMS1.110",
+	"17L5EMS1.111", // Pulse/Katana 17 B13V/GK
+	"17L5EMS1.115",
+	"17L5EMS2.115", // Katana 17 B12VEK
+	"17L7EMS1.102", // Katana 17 HX B14WGK
 	"17N1EMS1.109", // Creator Z17 A12UGST
+	"17P1EMS1.104", // Stealth GS77 12U(E/GS)
+	"17P1EMS1.106",
+	"17P2EMS1.111", // Stealth 17 Studio A13VI
 	"17Q2IMS1.107", // Titan GT77HX 13VH
 	"17Q2IMS1.10D",
 	"17S1IMS1.105", // Raider GE78HX 13VI
 	"17S1IMS1.113",
+	"17S1IMS1.114",
 	"17S1IMS2.107", // Vector 17 HX  A14V
 	"17S2IMS1.113", // Raider GE78 HX Smart Touchpad 13V
+	"17S3EMS1.104", // Vector 17 HX AI A2XWHG
 	"1822EMS1.105", // Titan 18 HX A14V
 	"1822EMS1.109", // WMI 2.8
 	"1822EMS1.111",
@@ -1523,6 +1636,7 @@ static const char *ALLOWED_FW_G2_10[] __initconst = {
 	"1822EMS1.115",
 	"1824EMS1.107", // Titan 18 HX Dragon Edition
 	"182LIMS1.108", // Vector A18 HX A9WHG
+	"182LIMS1.111", // New ec version for Vector A18 HX A9WHG
 	NULL
 };
 
@@ -1612,6 +1726,7 @@ static struct msi_ec_conf *CONFIGURATIONS[] __initdata = {
 	&CONF_G2_2,
 	&CONF_G2_3,
 	&CONF_G2_4,
+	&CONF_G2_5,
 	&CONF_G2_6,
 	&CONF_G2_10,
 	NULL
