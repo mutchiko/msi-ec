@@ -23,6 +23,33 @@ Eager to support the project? Your help is always welcome to keep the project al
 - Get solutions for common MSI laptop problems (ACPI errors, slow charger detection,...) and submit fixes if you have any in this [discussion](https://github.com/BeardOverflow/msi-ec/discussions/130#).
 - If you want to go deeper: [read into this discussion regarding EC firmware naming patterns](https://github.com/BeardOverflow/msi-ec/discussions/98).
 
+You can also contribute by sharing your feedback on the installation process and problems encountered with it in this discussion: https://github.com/BeardOverflow/msi-ec/discussions/662
+
+## AI Policy
+
+### AI Policy for code contributions, documentation contributions
+
+When contributing code or documentation, you have to follow these rules:
+
+1. Explicitly tell what has been made by AI, by which LLM, and by which agent tool. Please put that in the pull request's FIRST message.
+2. Review BY YOURSELF everything the AI has written to ensure quality and logic.
+3. You are not allowed to generate your whole PR with AI.
+4. You must take and will be accountable for the responsibility in case of problems with your AI code.
+
+In general, AI code is strongly discouraged and may get more negative reviews by the maintainers.
+
+### AI Policy for issues
+
+When making an issue, you must follow these rules:
+
+1. You may use AI to help get some information and commands to enrich your ticket.
+2. You may use AI to improve the grammar and readability of your ticket.
+3. Tickets ENTIRELY GENERATED with AI will NOT BE TREATED if the issue is not deemed serious enough.
+4. Fully generated AI bug reports may be straight up closed and denied by the maintainer of the project.
+5. You MUST be able to provide details when asked for them.
+6. You MUST tell when the AI was involved in the process. For diagnosis, please detail the model used and the agent tool if used in the FIRST message of the issue or somewhere or in a dedicated field of the issue template.
+
+In general, AI bug reports are discouraged unless it is to help with formulating the content in English because it is not your native language.
 
 ## Installation
 
@@ -40,8 +67,13 @@ Eager to support the project? Your help is always welcome to keep the project al
    - For Ubuntu: `sudo apt install build-essential linux-headers-generic`
    - For Fedora: `sudo dnf install kernel-devel`
    - For Arch:   `sudo pacman -S --needed base-devel linux-headers`
-2. Clone this repository and cd to it: `git clone https://github.com/BeardOverflow/msi-ec && cd msi-ec`   
+2. Clone this repository and cd to it: `git clone https://github.com/BeardOverflow/msi-ec && cd msi-ec` (Not required if using COPR or Debian/Alpine/Slackware install way) 
 3. Choose one of the following installation methods
+
+> [!NOTE]
+> Before installing any packaged version, you must uninstall every version of the module. If you were already using a packaged version, don't uninstall anything as the package manager will do it for you.
+> 
+> To uninstall that, run `sudo make dkms-uninstall`or `sudo make uninstall`depending on your install method.
 
 #### (Recommended) Installation using [DKMS](https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support):
 
@@ -72,6 +104,28 @@ boot.extraModulePackages = [ config.boot.kernelPackages.msi-ec ];
 boot.kernelModules = [ "msi-ec" ];
 ```
 
+### On Fedora 42+ / Fedora Silverblue 42+ / Fedora Kinoite 42+
+
+[![Copr build status](https://copr.fedorainfracloud.org/coprs/xabi08/MSI-EC/package/msi-ec-kmod/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/xabi08/MSI-EC/package/msi-ec-kmod/)
+
+Please note that if you are on Fedora Workstation or Fedora Workstation KDE, DKMS remains the recommended way to proceed over the COPR option.
+You may find more information about installing from COPR here : [COPR Repo](https://copr.fedorainfracloud.org/coprs/xabi08/MSI-EC/)
+
+You can share your feedback/issues with the COPR packages here: https://github.com/BeardOverflow/msi-ec/discussions/657
+
+### Debian / Alpine / Slackware
+
+Please check our brand new automatically built packages here: https://broadcasts.cloudsmith.com/msi-ec/msi-ec
+Instructions on how to install them are also available on this link by clicking on the name of the package you want to install.
+Updating is automatic for Debian and Alpine as this is our repository.
+
+> [!NOTE]
+> Alpine and Slackware support **have not been tested yet** since we did not have those distro in production. Therefore, they are still **experimental** and your feedback and issues encountered are greatly appreciated.
+
+You can share your experience with these packages here:
+ - Debian:  https://github.com/BeardOverflow/msi-ec/discussions/664
+ - Alpine: https://github.com/BeardOverflow/msi-ec/discussions/665
+ - Slackware: https://github.com/BeardOverflow/msi-ec/discussions/666
 
 ## Current Support in the Kernel
 
