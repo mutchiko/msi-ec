@@ -128,6 +128,7 @@ static struct msi_ec_conf CONF_G1_0 __initdata = {
 };
 
 static const char *ALLOWED_FW_G1_1[] __initconst = {
+	"16JFEMS1.105", // GV62 8RD
 	"16U7EMS1.105", // GP65 / GL65 Leopard 10S
 	"16U7EMS1.106",
 	"16U7EMS1.504", // GL65 Leopard 9SD
@@ -739,6 +740,8 @@ static struct msi_ec_conf CONF_G1_8 __initdata = {
 };
 
 static const char *ALLOWED_FW_G1_9[] __initconst = {
+	"1799EMS1.112", // GP72 7REX Leopard Pro
+	"17E9EMS1.105", // GE75 Raider 10 SF / SFS / SGS
 	"17G1EMS2.106", // P75  CREATOR 9SG
 	"17G1EMS1.100", // GS75 Stealth 8SF
 	"17G1EMS1.102", // GS75 Stealth 9SF
@@ -746,6 +749,7 @@ static const char *ALLOWED_FW_G1_9[] __initconst = {
 	"17G3EMS1.110", // GS75 Stealth 10SF
 	"17G3EMS1.113",
 	"17G3EMS1.115",
+	"17H1EMS1.103", // GT76 Titan DT 9 SF / SFS / SG / SGS
 	NULL
 };
 
@@ -1344,6 +1348,7 @@ static const char *ALLOWED_FW_G2_3[] __initconst = {
 	"15A1EMS1.105", // Prestige 16 AI Evo B1MG
 	"15A1EMS1.109", // Prestige 16 AI Evo B1MG (.109 EC rev)
 	"15A3EMS1.104", // Prestige 16 AI+ Evo B2VMG
+	"15QKIMS1.506", // Venture A15 AI A2HMG / A2HMTG
 	NULL
 };
 
@@ -1414,6 +1419,7 @@ static const char *ALLOWED_FW_G2_4[] __initconst = {
 	"14N2EMS1.103",
 	"14P1IMS1.104", // Cyborg 14 A13VF
 	"14P1IMS1.106",
+	"14T2EMS1.110", // Prestige 14 Flip AI+ D3MTG
 	NULL
 };
 
@@ -1662,6 +1668,7 @@ static const char *ALLOWED_FW_G2_10[] __initconst = {
 	"15FKIMS1.110", // Stealth A16 AI+ A3XVGG
 	"15FLIMS1.107", // Stealth A16 AI+ A3XWHG
 	"15FMIBA1.102", // Stealth A16 Mercedes AMG AI+ A3XWGG
+	"15G2EWS1.107", // CreatorPro Z16HXStudio B13VJTO / B13VKTO
 	"15K2EMS1.106", // Cyborg 15 AI A1VFK
 	"15K2EMS1.109",
 	"15M1IMS1.109", // Vector GP68 HX 13V
